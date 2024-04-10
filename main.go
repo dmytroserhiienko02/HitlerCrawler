@@ -14,20 +14,6 @@ const maxDepth = 6
 
 var visited = make(map[string]bool)
 
-func main() {
-	startURL := "https://en.wikipedia.org/wiki/Israel"
-	fmt.Println("Searching for the path to Hitler page...")
-	path, err := findHitlerPath(startURL, 1)
-	if err != nil {
-		log.Fatal(err)
-	}
-	if path != "" {
-		fmt.Println("Path to Hitler page found:", path)
-	} else {
-		fmt.Println("Hitler not found in 6 hops.")
-	}
-}
-
 func findHitlerPath(url string, depth int) (string, error) {
 	if depth > maxDepth {
 		return "", nil
@@ -90,4 +76,18 @@ func extractLinks(doc *goquery.Document) []string {
 		}
 	})
 	return links
+}
+
+func main() {
+	startURL := "https://en.wikipedia.org/wiki/Israel"
+	fmt.Println("Searching for the path to Hitler page...")
+	path, err := findHitlerPath(startURL, 1)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if path != "" {
+		fmt.Println("Path to Hitler page found:", path)
+	} else {
+		fmt.Println("Hitler not found in 6 hops.")
+	}
 }
