@@ -9,3 +9,4 @@ How to run
 Run main 
 `go run main.go`
 
+Approximate time for completing the task is 6 hours.
